@@ -28,10 +28,13 @@ def getFacts(num):
         print num
         r = requests.get('http://numbersapi.com/'+ num)
         print r.text
+        return r.text
         #return r.json()
     except IOError:
         print "error"
 
 number = randomNum()
+tweet = getFacts(number)
+print tweet
 
-getFacts(number)
+#api.update_status()
