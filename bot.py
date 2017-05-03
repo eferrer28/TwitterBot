@@ -19,16 +19,19 @@ api = tweepy.API(auth)
 #    print(tweet.text)
 
 def randomNum():
+    return str(random.randrange(1,600))
 
 
-def getFacts():
+def getFacts(num):
     try:
-        r = requests.get('http://numbersapi.com/58')
+
+        print num
+        r = requests.get('http://numbersapi.com/'+ num)
         print r.text
         #return r.json()
     except IOError:
         print "error"
 
-randomNum()
+number = randomNum()
 
-getFacts()
+getFacts(number)
