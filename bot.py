@@ -4,7 +4,6 @@ import time
 import tweepy
 from secrets import *
 
-#url = "http://numbersapi.com/58"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
@@ -25,11 +24,10 @@ def randomNum():
 def getFacts(num):
     try:
 
-        print num
-        r = requests.get('http://numbersapi.com/'+ num)
+        #print num - debug
+        r = requests.get(url + num)
         print r.text
         return r.text
-        #return r.json()
     except IOError:
         print "error"
 
@@ -39,7 +37,9 @@ def postTweet(msg):
         number = randomNum()
         tweet = getFacts(msg)
         postTweet(tweet)
-        #api.update_status(tweet)
+        api.update_status(tweet)
+    else:
+        api.update_status(msg)
 
 
 number = randomNum()
