@@ -19,7 +19,7 @@ api = tweepy.API(auth)
 #    print(tweet.text)
 
 def randomNum():
-    return str(random.randrange(1,600))
+    return str(random.randrange(1,250))
 
 
 def getFacts(num):
@@ -33,8 +33,20 @@ def getFacts(num):
     except IOError:
         print "error"
 
+def postTweet(msg):
+    if(len(msg) > 140):
+        print "too long"
+        number = randomNum()
+        tweet = getFacts(msg)
+        postTweet(tweet)
+        #api.update_status(tweet)
+
+
 number = randomNum()
 tweet = getFacts(number)
+postTweet(tweet)
+
+print len(tweet)
 print tweet
 
-#api.update_status()
+#api.update_status(tweet)
